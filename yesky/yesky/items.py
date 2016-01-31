@@ -21,5 +21,6 @@ class AlbumItem(scrapy.Item):
 class PageItem(scrapy.Item):
 	url = scrapy.Field()
 	title = scrapy.Field()
+	name = scrapy.Field()
 	image_urls = scrapy.Field()
 	images = scrapy.Field()

@@ -15,7 +15,8 @@ class MyImagesPipeline(ImagesPipeline):
         image_guid = request.url.split('/')[-1]
         # item=request.meta['item']
         title = request.cookies["title"][0].strip()
-        return 'full/%s/%s' % (title,image_guid)
+        name = request.cookies["from"][0].strip()
+        return '%s/%s/%s' % (name,title,image_guid)
 
     #Name thumbnail version
     def thumb_path(self, request, thumb_id, response=None, info=None):
@@ -25,4 +26,4 @@ class MyImagesPipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
         #yield Request(item['images']) # Adding meta. Dunno how to put it in one line :-)
         for image in item['image_urls']:
-            yield scrapy.Request(image, cookies={'title': item['title']})
+            yield scrapy.Request(image, cookies={'title': item['title'], 'from': item['name']})

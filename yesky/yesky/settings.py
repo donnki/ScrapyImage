@@ -13,6 +13,7 @@ BOT_NAME = 'yesky'
 
 SPIDER_MODULES = ['yesky.spiders']
 NEWSPIDER_MODULE = 'yesky.spiders'
+# LOG_LEVEL = 'INFO'
 
 ITEM_PIPELINES = {'yesky.pipelines.MyImagesPipeline': 1}
 IMAGES_STORE = './images/'
