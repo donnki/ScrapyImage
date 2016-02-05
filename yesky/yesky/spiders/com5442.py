@@ -8,23 +8,31 @@ class Com5442Spider(scrapy.Spider):
 	allowed_domains = ["5442.com"]
 
 	baseURL = 'http://www.5442.com'
-	baseID = "/meinv/list_1"
+	# baseID = "/meinv/list_1_"
+	baseID = "/tag/aiss/"
 	suffix = ".html"
+	
 	startPage = None
 	endPage = None
+	byTag = False
 
-	def __init__(self, start=None, end=None, *args, **kwargs):
+	def __init__(self, start=None, end=None, byTag=False, *args, **kwargs):
 		super(Com5442Spider, self).__init__(*args, **kwargs)
+		self.byTag = byTag
 		if start != None and start != "1":
-			self.start_urls = [self.baseURL + self.baseID + "_" + start + self.suffix]
+			self.start_urls = [self.baseURL + self.baseID + start + self.suffix]
 		else:
-			self.start_urls = [self.baseURL + self.baseID + "_1" + self.suffix]
+			self.start_urls = [self.baseURL + self.baseID + "1" + self.suffix]
 
 		if end != None:
 			self.endPage = int(end)
 
 	def parse(self, response):
-		for box in response.xpath('//div[@class="imgList"]/ul/li'):
+		xpath = '//div[@class="imgList"]/ul/li'
+		if self.byTag:
+			xpath = '//div[@class="item_t"]/div'
+
+		for box in response.xpath(xpath):
 			url = box.xpath('a/@href').extract()[0]
 			title = box.xpath('a/@title').extract()[0]
 			# print u'', url, title
@@ -32,9 +40,13 @@ class Com5442Spider(scrapy.Spider):
 			yield request
 			
 		nextPageStr = response.xpath('//div[@class="page both"]/ul/li[last()-1]/a/@href')[0].extract()
-		nextPageIndex = int(nextPageStr.split(".")[0].split("_")[2])
+		if self.byTag:
+			nextPageIndex = int(nextPageStr.split("/")[3].split(".")[0])
+		else:
+			nextPageIndex = int(nextPageStr.split(".")[0].split("_")[2])
 		if nextPageIndex <= self.endPage:
-			nextUrl = self.baseURL + self.baseID + "_" + str(nextPageIndex) + self.suffix
+			nextUrl = self.baseURL + self.baseID + str(nextPageIndex) + self.suffix
+			# print nextUrl
 			request = scrapy.Request(nextUrl, callback=self.parse)
 			yield request
 
