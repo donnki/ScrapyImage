@@ -29,6 +29,6 @@ class MyImagesPipeline(ImagesPipeline):
         for image in item['image_urls']:
             if not image.startswith("http"):
                 t = item['url'][0].split("/")
-                image = t[0] + t[2] + image 
+                image = t[0] + "//" + t[2] + image 
             # print(image)
             yield scrapy.Request(image, cookies={'title': item['title'], 'from': item['name']})
