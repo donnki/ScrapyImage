@@ -26,9 +26,12 @@ class MyImagesPipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
         #yield Request(item['images']) # Adding meta. Dunno how to put it in one line :-)
         # print(item)
+        # print(info)
         for image in item['image_urls']:
             if not image.startswith("http"):
                 t = item['url'][0].split("/")
                 image = t[0] + "//" + t[2] + image 
+            if item["replace"] != None:
+                image = image.replace(item['replace'][0], item['replace'][1])
             # print(image)
             yield scrapy.Request(image, cookies={'title': item['title'], 'from': item['name']})

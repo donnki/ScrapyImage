@@ -21,13 +21,14 @@ class ImgspiderSpider(scrapy.Spider):
 	#爬虫入口，解析相册列表页
 	def parse(self, response):
 		#获取当前页的每一个相册地址，调用parse_albumm解析相册
+		print("~~~~~~~~~~~~~")
 		for box in response.xpath(self.config["xpathAlbumList"]):
 			url = box.xpath(self.config["xpathAlbumURL"]).extract()[0]
 			title = box.xpath(self.config["xpathAlbumTitle"]).extract()[0]
 			print u'加载相册：', title, url
 			request = scrapy.Request(url, callback=self.parse_album, cookies={'title': title})
 			yield request
-			# break
+			break
 
 		#TODO：获取下一页列表页地址，递归调用parse_album_list
 		pass
@@ -52,6 +53,8 @@ class ImgspiderSpider(scrapy.Spider):
 		l.add_value('title', response.request.cookies['title'])
 		l.add_value('name', self.config["id"])
 		l.add_value('url', response.url)
+		if self.config.has_key("imageUrlReplacement"):
+			l.add_value('replace', self.config["imageUrlReplacement"])
 		l.add_xpath('image_urls', self.config["xpathImagesPath"])
 		yield l.load_item()
 		
