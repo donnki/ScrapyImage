@@ -25,7 +25,7 @@ class MyImagesPipeline(ImagesPipeline):
 
     def get_media_requests(self, item, info):
         #yield Request(item['images']) # Adding meta. Dunno how to put it in one line :-)
-
+        # print(item)
         for image in item['image_urls']:
             if not image.startswith("http"):
                 t = item['url'][0].split("/")
