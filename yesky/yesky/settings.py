@@ -19,6 +19,7 @@ ITEM_PIPELINES = {'yesky.pipelines.MyImagesPipeline': 1}
 IMAGES_STORE = './images/'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENTS = [
+	'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36',
     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
     "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Acoo Browser; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)",
     "Mozilla/4.0 (compatible; MSIE 7.0; AOL 9.5; AOLBuild 4337.35; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
@@ -38,30 +39,30 @@ USER_AGENTS = [
 ]
 
 PROXIES = [
-	{'ip_port': '218.75.100.114:8080', 'user_pass': None},
-	{'ip_port': '211.167.248.228:8080', 'user_pass': None},
-	{'ip_port': '60.12.227.208:80', 'user_pass': None},
-	{'ip_port': '221.8.9.6:80', 'user_pass': None},
-	{'ip_port': '218.26.219.186:8080', 'user_pass': None},
-	{'ip_port': '222.68.207.11:80', 'user_pass': None},
-	{'ip_port': '61.53.137.50:8080', 'user_pass': None},
-	{'ip_port': '218.75.75.133:8080', 'user_pass': None},
-	{'ip_port': '221.204.246.116:3128', 'user_pass': None},
-	{'ip_port': '125.39.129.67:80', 'user_pass': None},
-	{'ip_port': '220.194.55.244:3128', 'user_pass': None},
-	{'ip_port': '125.70.229.30:8080', 'user_pass': None},
-	{'ip_port': '220.194.55.160:3128', 'user_pass': None},
+	# {'ip_port': '218.75.100.114:8080', 'user_pass': None},
+	# {'ip_port': '211.167.248.228:8080', 'user_pass': None},
+	# {'ip_port': '60.12.227.208:80', 'user_pass': None},
+	# {'ip_port': '221.8.9.6:80', 'user_pass': None},
+	# {'ip_port': '218.26.219.186:8080', 'user_pass': None},
+	# {'ip_port': '222.68.207.11:80', 'user_pass': None},
+	# {'ip_port': '61.53.137.50:8080', 'user_pass': None},
+	# {'ip_port': '218.75.75.133:8080', 'user_pass': None},
+	# {'ip_port': '221.204.246.116:3128', 'user_pass': None},
+	# {'ip_port': '125.39.129.67:80', 'user_pass': None},
+	# {'ip_port': '220.194.55.244:3128', 'user_pass': None},
+	# {'ip_port': '125.70.229.30:8080', 'user_pass': None},
+	# {'ip_port': '220.194.55.160:3128', 'user_pass': None},
 	{'ip_port': '202.98.11.101:8080', 'user_pass': None},
-	{'ip_port': '59.76.81.3:8080', 'user_pass': None},
-	{'ip_port': '121.11.87.171:80', 'user_pass': None},
-	{'ip_port': '121.9.221.188:80', 'user_pass': None},
-	{'ip_port': '221.195.40.145:80', 'user_pass': None},
-	{'ip_port': '219.132.142.10:8080', 'user_pass': None},
-	{'ip_port': '61.178.63.197:3128', 'user_pass': None},
-	{'ip_port': '221.130.202.206:80', 'user_pass': None},
-	{'ip_port': '203.171.230.230:80', 'user_pass': None},
-	{'ip_port': '221.226.3.141:3128', 'user_pass': None},
-	{'ip_port': '210.74.130.34:8080', 'user_pass': None},
+	# {'ip_port': '59.76.81.3:8080', 'user_pass': None},
+	# {'ip_port': '121.11.87.171:80', 'user_pass': None},
+	# {'ip_port': '121.9.221.188:80', 'user_pass': None},
+	# {'ip_port': '221.195.40.145:80', 'user_pass': None},
+	# {'ip_port': '219.132.142.10:8080', 'user_pass': None},
+	# {'ip_port': '61.178.63.197:3128', 'user_pass': None},
+	# {'ip_port': '221.130.202.206:80', 'user_pass': None},
+	# {'ip_port': '203.171.230.230:80', 'user_pass': None},
+	# {'ip_port': '221.226.3.141:3128', 'user_pass': None},
+	# {'ip_port': '210.74.130.34:8080', 'user_pass': None},
 
 ]
 
@@ -102,9 +103,9 @@ COOKIES_ENABLED=False
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'yesky.middlewares.RandomUserAgent': 1,
-   # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
-   # 'yesky.middlewares.ProxyMiddleware': 100,
+   # 'yesky.middlewares.RandomUserAgent': 1,
+   'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 3,
+   # 'yesky.middlewares.ProxyMiddleware': 2,
 }
 
 # Enable or disable extensions

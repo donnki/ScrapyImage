@@ -6,14 +6,15 @@ class Config:
 			return { 		#豆瓣网友相册
 				'id': 'douban_people/fugen',
 				'domain': 'douban.com',
-				'start_urls': ['https://www.douban.com/people/fugen/photos'],
+				'start_urls': ['https://www.douban.com/people/fugen/photos?start=80'],
 				"xpathAlbumList": '//div[@class="albumlst"]',
 				'xpathAlbumURL':'div[@class="albumlst_r"]/div/a/@href',
 				'xpathAlbumTitle': 'div[@class="albumlst_r"]/div/a/text()',
-				'xpathFirstPage': '//div[@class="photolst clearfix"]/div/a/@href',
-				'xpathImagesPath': '//a[@class="mainphoto"]/img/@src',
-				'xpathNextImageUrl': '//a[@class="mainphoto"]/@href',
-				'imageUrlReplacement': ['photo/photo', 'photo/large'],
+				# 'xpathFirstPage': '//div[@class="photolst clearfix"]/div/a/@href',
+				'specificAlbums': ['https://www.douban.com/photos/album/108449647/'],
+				'xpathImagesPath': '//a[@class="photolst_photo"]/img/@src',
+				'xpathNextImageUrl': '//span[@class="next"]/a/@href',
+				'imageUrlReplacement': ['photo/thumb', 'photo/large'],
 			}
 		elif key == "5442":
 			return {

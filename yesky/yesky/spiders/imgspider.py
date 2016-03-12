@@ -23,12 +23,14 @@ class ImgspiderSpider(scrapy.Spider):
 		#获取当前页的每一个相册地址，调用parse_albumm解析相册
 		print("~~~~~~~~~~~~~")
 		for box in response.xpath(self.config["xpathAlbumList"]):
+
 			url = box.xpath(self.config["xpathAlbumURL"]).extract()[0]
 			title = box.xpath(self.config["xpathAlbumTitle"]).extract()[0]
-			print u'加载相册：', title, url
-			request = scrapy.Request(url, callback=self.parse_album, cookies={'title': title})
-			yield request
-			break
+			if not self.config.has_key("specificAlbums") or url in self.config["specificAlbums"]:
+				print u'加载相册：', title, url
+				request = scrapy.Request(url, callback=self.parse_album, cookies={'title': title})
+				yield request
+			# break
 
 		#TODO：获取下一页列表页地址，递归调用parse_album_list
 		pass
