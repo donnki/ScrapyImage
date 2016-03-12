@@ -17,7 +17,7 @@ class Config:
 			return {
 				'id': '5442',
 				'domain': '5442.com',
-				'start_urls': ['http://www.5442.com/tag/rosi.html'],
+				'start_urls': ['http://www.5442.com/tag/rosi/2.html'],
 				"xpathAlbumList": '//div[@class="item_t"]/div',
 				'xpathAlbumURL':'a/@href',
 				'xpathAlbumTitle': 'a/@title',
@@ -26,9 +26,12 @@ class Config:
 			}
 		elif key == "yesky":
 			return {
+				'id': 'yesky',
 				'domain': 'yesky.com',
 				'start_urls': ['http://pic.yesky.com/c/6_3655.shtml'],
 				"xpathAlbumList": '//div[@class="lb_box"]/dl',
 				'xpathAlbumURL':'dd/a/@href',
 				'xpathAlbumTitle': 'dd/a/@title',
+				'xpathImagesPath': '//div[@class="l_effect_img_mid"]/a/img/@src',
+				'xpathNextImageUrl': '//a[@class="effect_img_right"]/@href',
 			}
