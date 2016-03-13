@@ -73,7 +73,7 @@ class ImgspiderSpider(scrapy.Spider):
 				
 				if not url.startswith("http") and self.config.has_key("baseAddress"):
 					url = self.config["baseAddress"] + url
-				print u'加载相册：', title, url
+				# print u'加载相册：', title, url
 				request = scrapy.Request(url, headers=self.headers, callback=self.parse_album, cookies={'title': title})
 				yield request
 				# break
@@ -106,9 +106,11 @@ class ImgspiderSpider(scrapy.Spider):
 		l.add_value('url', response.url)
 		if self.config.has_key("imageUrlReplacement"):
 			l.add_value('replace', self.config["imageUrlReplacement"])
-		else:
-			l.add_value('replace', False)
-		l.add_xpath('image_urls', self.config["xpathImagesPath"])
+			
+		if self.config.has_key("xpathImagesPath"):
+			l.add_xpath('image_urls', self.config["xpathImagesPath"])
+		if self.config.has_key("xpathFilesPath"):
+			l.add_xpath('file_urls', self.config["xpathFilesPath"])
 		yield l.load_item()
 		
 		#TODO：获取下一页地址，递归调用自parse_page

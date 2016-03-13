@@ -25,3 +25,5 @@ class PageItem(scrapy.Item):
 	image_urls = scrapy.Field()
 	images = scrapy.Field()
 	replace = scrapy.Field()
+	file_urls = scrapy.Field()
+	files = scrapy.Field()
