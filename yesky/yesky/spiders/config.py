@@ -15,6 +15,16 @@ class Config:
 				'xpathImagesPath': '//a[@class="photolst_photo"]/img/@src',
 				'xpathNextImageUrl': '//span[@class="next"]/a/@href',
 				'imageUrlReplacement': ['photo/thumb', 'photo/large'],
+				# 'loginFirst': {
+				# 	'formURL': "https://www.douban.com/accounts/login",
+				# 	'formdata' :{
+				# 		"source": "None",
+				# 		"redir": "https://www.douban.com/doumail/",
+				# 		"form_email": "",
+				# 		"form_password": "",
+				# 		"login": "登录",
+				# 	}
+				# },
 			}
 		elif key == "5442":
 			return {
@@ -38,11 +48,4 @@ class Config:
 				'xpathImagesPath': '//div[@class="l_effect_img_mid"]/a/img/@src',
 				'xpathNextImageUrl': '//a[@class="effect_img_right"]/@href',
 			}
-# PROXIES = [
-#     {'ip_port': '111.11.228.75:80', 'user_pass': ''},
-#     {'ip_port': '120.198.243.22:80', 'user_pass': ''},
-#     {'ip_port': '111.8.60.9:8123', 'user_pass': ''},
-#     {'ip_port': '101.71.27.120:80', 'user_pass': ''},
-#     {'ip_port': '122.96.59.104:80', 'user_pass': ''},
-#     {'ip_port': '122.224.249.122:8088', 'user_pass': ''},
-# ]
+		

@@ -14,6 +14,7 @@ class RandomUserAgent(object):
 
     def process_request(self, request, spider):
         # print "**************************" + random.choice(self.agents)
+        print(request.headers)
         request.headers.setdefault('User-Agent', random.choice(self.agents))
 
 class ProxyMiddleware(object):

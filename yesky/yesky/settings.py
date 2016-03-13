@@ -80,19 +80,17 @@ DOWNLOAD_DELAY=3
 #CONCURRENT_REQUESTS_PER_IP=16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED=False
+# COOKIES_ENABLED=False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED=False
 
 # Override the default request headers:
-# DEFAULT_REQUEST_HEADERS = {
-  # 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36',
-  # 'Cookie': 'bid="0nRzjXwhzTg"; gr_user_id=a1c41d3e-ced9-4fdd-b7dc-1bc44bd6a736; ll="118293"; ps=y; ct=y; ap=1; ue="pp3288@sina.com"; dbcl2="3811658:ljvBiWOrgt4"; ck="_52r"; _pk_ref.100001.8cb4=%5B%22%22%2C%22%22%2C1457759485%2C%22https%3A%2F%2Faccounts.douban.com%2Flogin%3Fuid%3D3811658%26alias%3Dpp3288%2540sina.com%26redir%3Dhttp%253A%252F%252Fwww.douban.com%252F%26source%3Dindex_nav%26error%3D1027%22%5D; __ads_session=XtnJ2R5esAjrtacyogA=; push_noty_num=0; push_doumail_num=0; _pk_id.100001.8cb4=79351234f2377262.1419138145.51.1457761584.1457756555.; _pk_ses.100001.8cb4=*; __utmt=1; __utma=30149280.1550645312.1441589516.1457755838.1457759487.91; __utmb=30149280.32.10.1457759487; __utmc=30149280; __utmz=30149280.1454589790.77.4.utmcsr=accounts.douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/login; __utmv=30149280.381',
-
-  # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-  # 'Accept-Language': 'en',
-# }
+DEFAULT_REQUEST_HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36',
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'en',
+}
 
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
@@ -104,7 +102,9 @@ COOKIES_ENABLED=False
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    # 'yesky.middlewares.RandomUserAgent': 1,
-   'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 3,
+   'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware':2,
+   # 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware':3,
+   # 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 4,
    # 'yesky.middlewares.ProxyMiddleware': 2,
 }
 
