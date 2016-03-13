@@ -21,7 +21,6 @@ class ImgspiderSpider(scrapy.Spider):
 		"Connection": "keep-alive",
 		"Content-Type":" application/x-www-form-urlencoded; charset=UTF-8",
 		"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36",
-		# "Referer": "http://sexinsex.net/bbs/forum-64-1.html"
 	}
 	#scrapy crawl imgspider -a config=douban
 	def __init__(self, config, *args, **kwargs):
